@@ -163,14 +163,17 @@ function startDashboard() {
 
   function sendAlertNotification() {
     const reason = alertReason.innerText !== "--" ? alertReason.innerText : "Alerte active!";
-    if (navigator.serviceWorker.controller) {
-      navigator.serviceWorker.controller.postMessage({
-        type: 'SHOW_ALERT',
-        title: 'Alerte ESP8266',
-        body: reason
-      });
-    } else if ('Notification' in window && Notification.permission === 'granted') {
+    if ('Notification' in window && Notification.permission === 'granted') {
       new Notification('Alerte ESP8266', { body: reason, icon: '/favicon.ico' });
+    }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(reg => {
+        if (reg.active) {
+          reg.active.postMessage({
+            type: 'SHOW_ALERT', title: 'Alerte ESP8266', body: reason
+          });
+        }
+      });
     }
   }
 }
