@@ -1,0 +1,7 @@
+{
+  "name": "ESP8266 Surveillance",
+  "short_name": "ESP8266",
+  "start_url": ".",
+  "display": "standalone",
+  "gcm_sender_id": "415048545383"
+}

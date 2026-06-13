@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>ESP8266 Surveillance</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h1>Systeme de Surveillance ESP8266</h1>
+
+  <!-- Login form -->
+  <div id="loginForm">
+    <input type="email" id="email" placeholder="Entrez l'email" required />
+    <input type="password" id="password" placeholder="Entrez le mot de passe" required />
+    <button id="loginBtn">Connexion</button>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard">
+
+    <!-- Master Control -->
+    <div class="master-container">
+      <div class="master-card">
+        <h2>Controle General</h2>
+        <p>Etat: <span id="masterStatus" class="status-on">ACTIF</span></p>
+        <div class="btn-group">
+          <button class="btn-on" id="masterOn">ACTIVER</button>
+          <button class="btn-off" id="masterOff">DESACTIVER</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sensors -->
+    <div class="sensors-container">
+      <div class="sensor-card">
+        <h2>Temperature</h2>
+        <p class="sensor-value" id="tempValue">--</p>
+        <p class="sensor-unit" id="tempUnit">°C</p>
+      </div>
+      <div class="sensor-card">
+        <h2>Humidite</h2>
+        <p class="sensor-value" id="humValue">--</p>
+        <p class="sensor-unit">%</p>
+      </div>
+      <div class="sensor-card">
+        <h2>Flamme</h2>
+        <p class="sensor-value" id="flameValue">NON</p>
+        <p class="sensor-unit" id="flameUnit">Aucune flamme</p>
+      </div>
+    </div>
+
+    <!-- Alert Banner -->
+    <div id="alertBanner" class="alert-hidden">
+      <div class="alert-content">
+        <h2>ALERTE ACTIVE</h2>
+        <p id="alertReason">--</p>
+      </div>
+    </div>
+
+    <!-- Logout -->
+    <button id="logoutBtn">Deconnexion</button>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging-compat.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
